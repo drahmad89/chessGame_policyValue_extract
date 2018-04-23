@@ -8,10 +8,6 @@ parentPath = os.path.abspath("..")
 if parentPath not in sys.path:
     sys.path.insert(0, parentPath)
 
-from network.policy_network import PolicyValNetwork_Giraffe
-from logger import Logger
-
-
 def get_board_position(file_name):
     pgn = open(file_name)
 
