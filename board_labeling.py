@@ -10,25 +10,6 @@ import argparse
 import torch
 import chess.pgn
 
-def get_board_position(pgn):
-    board_positions = []
-    try:
-        while True:
-            kasgame = chess.pgn.read_game(pgn)
-            if kasgame is None:
-                break
-            board = kasgame.board()
-            board_positions.append(board.copy())
-            for move in kasgame.main_line():
-                board.push(move)
-                board_positions.append(board.copy())
-    except Exception:
-        print("We have {} board positions".format(len(board_positions)))
-        return board_positions
-
-
-def cross_entropy(pred, soft_targets):
-    return torch.mean(torch.sum(- soft_targets.double() * torch.log(pred).double(), 1))
 
 
 parser = argparse.ArgumentParser(description='Launcher for distributed Chess trainer')
